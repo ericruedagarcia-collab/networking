@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollUp para Creadores - Viaja y Monetiza</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    
+    <!-- Google AdSense Auto Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5905369775862039" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Barra Superior -->
+    <header class="navbar reveal-on-scroll">
+        <div class="lang-toggle-container">
+            <div class="lang-selector">
+                <button class="lang-btn active" id="btn-es" onclick="setLanguage('es')">🇪🇸 ES</button>
+                <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">🇬🇧 EN</button>
+            </div>
+        </div>
+        <div class="logo-container">
+            <a href="index.html"><img src="assets/logo.png" alt="CollUp Logo" class="nav-logo"></a>
+        </div>
+        <a href="#registro" class="nav-btn" data-i18n="nav_join">Unirse a la lista</a>
+    </header>
+
+    <!-- Ad Placeholder Top -->
+    <div class="ad-placeholder ad-top reveal-on-scroll">
+        <!-- Banner collup -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5905369775862039"
+             data-ad-slot="9597583175"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero reveal-on-scroll">
+        <div class="hero-content">
+            <h1 data-i18n="inf_hero_title">Convierte tu contenido en <span class="text-gradient">experiencias únicas</span>.</h1>
+            <p data-i18n="inf_hero_desc">La app exclusiva donde los creadores de contenido de viajes conectan con marcas, hoteles y agencias para colaboraciones seguras y sin comisiones de intermediarios.</p>
+            <a href="#registro" class="btn btn-primary hero-btn"><span data-i18n="inf_hero_btn">Quiero Viajar</span> <i data-lucide="arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ¿Qué es CollUp? -->
+    <section class="about-section reveal-on-scroll">
+        <div class="about-container">
+            <div class="about-text">
+                <div class="section-badge"><i data-lucide="zap"></i> <span data-i18n="inf_badge">SIN AGENCIAS</span></div>
+                <h2 data-i18n="inf_about_title">¿Por qué CollUp?</h2>
+                <p data-i18n="inf_about_p1">Olvida los correos fríos y los mensajes de Instagram ignorados. Aquí las empresas vienen a buscarte a ti.</p>
+                <p data-i18n="inf_about_p2">CollUp es la primera app "tipo Tinder" exclusiva para el sector turismo que garantiza que cobrarás por tu trabajo reteniendo el dinero antes de empezar.</p>
+                <ul class="about-list">
+                    <li><i data-lucide="check-circle" class="icon-cyan"></i> <span data-i18n="inf_about_l1">Cobros 100% garantizados (Escrow).</span></li>
+                    <li><i data-lucide="check-circle" class="icon-cyan"></i> <span data-i18n="inf_about_l2">Negociación directa por chat.</span></li>
+                    <li><i data-lucide="check-circle" class="icon-cyan"></i> <span data-i18n="inf_about_l3">Acuerdos por canje (hoteles gratis) o remunerados.</span></li>
+                </ul>
+            </div>
+            <div class="about-visual">
+                <img src="assets/mockup.png" alt="CollUp App Match" class="app-mockup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Placeholder Middle 1 -->
+    <div class="ad-placeholder reveal-on-scroll">
+        <!-- Banner collup -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5905369775862039"
+             data-ad-slot="9597583175"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- ¿Cómo Funciona? -->
+    <section class="how-it-works reveal-on-scroll">
+        <h2 class="section-title" data-i18n="inf_steps_title">Encuentra Colaboraciones en 3 Pasos</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-icon"><i data-lucide="user-check"></i></div>
+                <h3 data-i18n="inf_step1_title">1. Destaca tu Perfil</h3>
+                <p data-i18n="inf_step1_desc">Muestra tu portfolio, estadísticas reales y tarifas en un perfil verificado que transmite confianza.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon"><i data-lucide="mouse-pointer-click"></i></div>
+                <h3 data-i18n="inf_step2_title">2. Haz Swipe</h3>
+                <p data-i18n="inf_step2_desc">Descubre ofertas de hoteles y marcas. Si hay interés mutuo, ¡Es un Match! y se abre un chat privado.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon"><i data-lucide="wallet"></i></div>
+                <h3 data-i18n="inf_step3_title">3. Viaja y Cobra</h3>
+                <p data-i18n="inf_step3_desc">Disfruta de la experiencia, sube tu contenido y el dinero retenido se liberará a tu cuenta automáticamente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formularios Segmentados -->
+    <section class="forms-section reveal-on-scroll" id="registro">
+        <h2 class="section-title" data-i18n="inf_form_title">Únete a la Lista VIP de Creadores</h2>
+        <p class="section-subtitle" data-i18n="inf_form_subtitle">Las plazas son limitadas. Asegura tu acceso temprano antes del lanzamiento oficial.</p>
+        
+        <div class="forms-container">
+            <!-- Tarjeta Influencer -->
+            <div class="glass-card influencer-card" style="max-width: 600px;">
+                <div class="card-header">
+                    <i data-lucide="instagram" class="card-icon icon-cyan"></i>
+                    <h2 data-i18n="inf_form_card_title">Soy Creador</h2>
+                </div>
+                <form id="influencer-form" class="waitlist-form">
+                    <div class="input-group">
+                        <label for="inf-name" data-i18n="form_user">Usuario de IG / TikTok</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="at-sign"></i>
+                            <input type="text" id="inf-name" required placeholder="tu_usuario">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="inf-email" data-i18n="form_email">Email de Contacto</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="mail"></i>
+                            <input type="email" id="inf-email" required placeholder="tu@email.com">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="inf-niche" data-i18n="form_niche">¿Cuál es tu Nicho Principal?</label>
+                        <div class="input-wrapper select-wrapper">
+                            <i data-lucide="tag"></i>
+                            <select id="inf-niche" required>
+                                <option value="" disabled selected data-i18n="form_niche_select">Selecciona tu nicho...</option>
+                                <option value="Viajes/Turismo" data-i18n="niche_travel">Viajes y Turismo</option>
+                                <option value="Lifestyle" data-i18n="niche_lifestyle">Estilo de Vida</option>
+                                <option value="Gastronomía" data-i18n="niche_food">Gastronomía</option>
+                                <option value="Moda" data-i18n="niche_fashion">Moda y Belleza</option>
+                                <option value="Tecnología" data-i18n="niche_tech">Tecnología</option>
+                                <option value="Otro" data-i18n="niche_other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span data-i18n="form_btn">Reservar mi plaza</span></button>
+                    <div class="success-message" id="inf-success"><i data-lucide="check-circle"></i> <span data-i18n="form_success">¡Añadido con éxito! Te avisaremos pronto.</span></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="reveal-on-scroll">
+        <img src="assets/logo.png" alt="CollUp Logo" class="footer-logo">
+        <p data-i18n="footer_copy">© 2026 CollUp. Redefiniendo el marketing de influencia.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

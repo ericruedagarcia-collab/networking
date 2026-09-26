@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollUp | Elige tu perfil</title>
+    <meta name="description" content="CollUp conecta negocios y creadores de contenido. Elige tu perfil para acceder a tu acceso VIP anticipado.">
+    <link rel="icon" href="assets/logo.png">
+    <link rel="stylesheet" href="business-vip.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        html, body.gateway-body { min-height: 100%; background: var(--navy-950); }
+
+        .gw-hero {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 64px 6% 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .gw-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: gwIn 0.7s var(--ease) forwards;
+        }
+        .gw-logo img {
+            height: 96px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 26px rgba(79,184,170,0.4));
+        }
+        @media (min-width: 700px) { .gw-logo img { height: 128px; } }
+
+        .gw-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(156, 247, 225, 0.08);
+            border: 1px solid rgba(156, 247, 225, 0.28);
+            color: var(--teal-1);
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.09em;
+            padding: 9px 18px; border-radius: 999px;
+            margin-bottom: 22px;
+            opacity: 0;
+            animation: gwIn 0.7s var(--ease) 0.08s forwards;
+        }
+        .gw-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-1); box-shadow: 0 0 10px var(--teal-1); }
+
+        .gw-hero h1 {
+            font-family: var(--font-display);
+            font-weight: var(--weight-black);
+            font-size: clamp(2.1rem, 5.4vw, 3.4rem);
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: gwIn 0.7s var(--ease) 0.15s forwards;
+        }
+        .gw-hero p.gw-sub {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 52px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: gwIn 0.7s var(--ease) 0.22s forwards;
+        }
+
+        @keyframes gwIn { to { opacity: 1; } }
+        @keyframes gwRise { to { opacity: 1; transform: translateY(0); } }
+
+        .gw-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            width: 100%;
+            max-width: 880px;
+        }
+        @media (max-width: 700px) { .gw-cards { grid-template-columns: 1fr; } }
+
+        .gw-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: var(--ink);
+            background: var(--card, rgba(255,255,255,0.03));
+            border: 1.5px solid var(--card-border, rgba(255,255,255,0.09));
+            border-radius: 28px;
+            padding: 44px 32px 36px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: gwRise 0.7s var(--ease) forwards;
+            transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+        .gw-card--creators { animation-delay: 0.3s; }
+        .gw-card--business { animation-delay: 0.4s; }
+        .gw-card:hover { transform: translateY(-6px); box-shadow: 0 26px 50px -22px rgba(0,0,0,0.55); }
+
+        .gw-card::before {
+            content: '';
+            position: absolute; inset: -40% -20% auto -20%; height: 70%;
+            opacity: 0; transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+        .gw-card--creators::before { background: radial-gradient(ellipse at center, rgba(226,143,208,0.20), transparent 70%); }
+        .gw-card--business::before { background: radial-gradient(ellipse at center, rgba(156,247,225,0.20), transparent 70%); }
+        .gw-card:hover::before { opacity: 1; }
+
+        .gw-card--creators { border-color: rgba(226,143,208,0.22); }
+        .gw-card--creators:hover { border-color: rgba(226,143,208,0.5); }
+        .gw-card--business { border-color: rgba(156,247,225,0.22); }
+        .gw-card--business:hover { border-color: rgba(156,247,225,0.5); }
+
+        .gw-icon {
+            position: relative; z-index: 1;
+            width: 76px; height: 76px;
+            border-radius: 22px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+        }
+        .gw-icon svg { width: 34px; height: 34px; }
+        .gw-card--creators .gw-icon { background: linear-gradient(135deg, rgba(247,184,232,0.20), rgba(193,95,201,0.08)); }
+        .gw-card--creators .gw-icon svg { stroke: #F5A9E5; }
+        .gw-card--business .gw-icon { background: linear-gradient(135deg, rgba(156,247,225,0.20), rgba(79,184,170,0.08)); }
+        .gw-card--business .gw-icon svg { stroke: var(--teal-1); }
+
+        .gw-card h2 { position: relative; z-index: 1; font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+        .gw-card p { position: relative; z-index: 1; font-size: 0.98rem; color: var(--muted); line-height: 1.55; margin-bottom: 28px; }
+
+        .gw-cta {
+            position: relative; z-index: 1;
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 15px 28px;
+            border-radius: 999px;
+            font-weight: 700; font-size: 0.96rem;
+            color: #0A0A0F;
+            transition: transform 0.25s var(--ease);
+        }
+        .gw-card--creators .gw-cta { background: linear-gradient(115deg, #F7C6EC 0%, #E28FD0 55%, #C15FC9 100%); }
+        .gw-card--business .gw-cta { background: var(--teal-grad); }
+        .gw-card:hover .gw-cta { transform: translateY(-2px); }
+        .gw-cta svg { width: 17px; height: 17px; transition: transform 0.25s var(--ease); }
+        .gw-card:hover .gw-cta svg { transform: translateX(3px); }
+
+        .gw-footer {
+            margin-top: 48px;
+            font-size: 0.82rem;
+            color: var(--muted-2);
+            opacity: 0;
+            animation: gwIn 0.7s var(--ease) 0.5s forwards;
+        }
+    </style>
+</head>
+<body class="gateway-body">
+
+    <div class="noise-overlay"></div>
+
+    <section class="gw-hero">
+        <div class="vip-hero-bg" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+
+        <div class="gw-logo"><img src="assets/logo.png" alt="CollUp"></div>
+
+        <div class="gw-badge"><span class="dot"></span> ACCESO VIP ANTICIPADO</div>
+
+        <h1>¿Cómo quieres entrar?</h1>
+        <p class="gw-sub">CollUp conecta negocios y creadores de contenido. Elige tu perfil para reservar tu plaza antes del lanzamiento.</p>
+
+        <div class="gw-cards">
+            <a href="influencer-vip.html" class="gw-card gw-card--creators">
+                <div class="gw-icon"><i data-lucide="sparkles"></i></div>
+                <h2>Soy creador</h2>
+                <p>Conecta con marcas verificadas, negocia sin salir de la app y cobra sin arriesgarte.</p>
+                <span class="gw-cta">Entrar como creador <i data-lucide="arrow-right"></i></span>
+            </a>
+
+            <a href="index.html" class="gw-card gw-card--business">
+                <div class="gw-icon"><i data-lucide="building-2"></i></div>
+                <h2>Soy negocio</h2>
+                <p>Encuentra creadores auditados, paga sin riesgo y mide el ROI de cada colaboración.</p>
+                <span class="gw-cta">Entrar como negocio <i data-lucide="arrow-right"></i></span>
+            </a>
+        </div>
+
+        <div class="gw-footer">© 2026 CollUp. Redefiniendo el marketing de influencia.</div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

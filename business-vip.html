@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollUp Business | Acceso VIP Anticipado</title>
+    <meta name="description" content="Sé de los primeros negocios en CollUp. Conecta con creadores verificados, paga sin riesgo y mide tu ROI. Acceso exclusivo antes del lanzamiento.">
+    <link rel="icon" href="assets/logo.png">
+    <link rel="stylesheet" href="business-vip.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+
+    <!-- NAV -->
+    <header class="vip-nav">
+        <a href="index.html" class="vip-logo">
+            <img src="assets/logo.png" alt="CollUp">
+        </a>
+        <a href="#acceso" class="vip-nav-cta">Quiero acceso VIP</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="vip-hero">
+        <div class="vip-hero-bg" aria-hidden="true"></div>
+        <div class="vip-badge fade-up">
+            <span class="dot"></span> ACCESO ANTICIPADO PARA NEGOCIOS · PLAZAS LIMITADAS
+        </div>
+        <h1 class="vip-hero-title fade-up">
+            TU NEGOCIO,<br>
+            <span class="vip-gradient">ANTES QUE NADIE.</span>
+        </h1>
+        <p class="vip-hero-sub fade-up">
+            CollUp conecta hoteles, restaurantes y marcas con creadores de contenido verificados.
+            Regístrate ahora y consigue meses de suscripción gratis por ser de los primeros en la plataforma.
+        </p>
+        <div class="vip-hero-actions fade-up">
+            <a href="#acceso" class="btn-vip-primary">
+                Reservar mi acceso exclusivo <i data-lucide="arrow-right"></i>
+            </a>
+            <div class="vip-hero-meta">
+                <div class="avatars">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=140&h=140&fit=crop&q=80" alt="Hotel en CollUp">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=140&h=140&fit=crop&q=80" alt="Restaurante en CollUp">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=140&h=140&fit=crop&q=80" alt="Agencia de viajes en CollUp">
+                </div>
+                <p>Negocios ya en lista de espera</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGOS / TRUST STRIP -->
+    <section class="trust-strip fade-up">
+        <p>PENSADO PARA</p>
+        <div class="trust-items">
+            <span>HOTELES</span>
+            <span>RESTAURANTES</span>
+            <span>AGENCIAS DE VIAJE</span>
+            <span>MARCAS DE MODA</span>
+            <span>BEAUTY &amp; RETAIL</span>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA: una fila = un paso + su propio móvil, siempre visibles juntos -->
+    <section class="story-section" id="como-funciona">
+        <div class="story-intro fade-up">
+            <span class="eyebrow">CÓMO FUNCIONA</span>
+            <h2>De cero a colaboración <br class="br-desktop">en 5 pasos.</h2>
+        </div>
+
+        <div class="story-rows">
+
+            <article class="story-row fade-up">
+                <div class="story-row-text">
+                    <span class="step-num">01</span>
+                    <h3>Publica tu negocio</h3>
+                    <p>Crea tu perfil verificado: fotos, ubicación y qué ofreces a cambio — canje, pago o ambos. Tu escaparate frente a miles de creadores.</p>
+                </div>
+                <div class="story-row-visual">
+                    <div class="phone-mini">
+                        <div class="phone-mini-shell">
+                            <div class="phone-mini-cam"></div>
+                            <span class="phone-mini-btn btn-side-1"></span>
+                            <span class="phone-mini-btn btn-side-2"></span>
+                            <span class="phone-mini-btn btn-power"></span>
+                            <div class="phone-mini-screen">
+                                <div class="phone-mini-shine"></div>
+                                <img src="assets/vip/brandhome.png" alt="Perfil de negocio en CollUp">
+                            </div>
+                        </div>
+                        <div class="phone-mini-glow glow-cyan"></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="story-row story-row-reverse fade-up">
+                <div class="story-row-text">
+                    <span class="step-num">02</span>
+                    <h3>Match con creadores reales</h3>
+                    <p>Filtra por nicho, ubicación y audiencia auditada. Desliza, conecta y olvida los perfiles con seguidores falsos.</p>
+                </div>
+                <div class="story-row-visual">
+                    <div class="phone-mini">
+                        <div class="phone-mini-shell">
+                            <div class="phone-mini-cam"></div>
+                            <span class="phone-mini-btn btn-side-1"></span>
+                            <span class="phone-mini-btn btn-side-2"></span>
+                            <span class="phone-mini-btn btn-power"></span>
+                            <div class="phone-mini-screen">
+                                <div class="phone-mini-shine"></div>
+                                <img src="assets/vip/match.png" alt="Match con creadores en CollUp">
+                            </div>
+                        </div>
+                        <div class="phone-mini-glow glow-blue"></div>
+                        <div class="creator-card-float">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&q=80" alt="Foto de perfil de creadora">
+                            <div class="creator-card-info">
+                                <strong>Marta Ruiz <i data-lucide="badge-check"></i></strong>
+                                <span>@martaviaja · Viajes · 42K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="story-row fade-up">
+                <div class="story-row-text">
+                    <span class="step-num">03</span>
+                    <h3>Negocia y contrata sin salir de la app</h3>
+                    <p>Chat integrado y contrato digital automático. Condiciones claras, firmadas y guardadas desde el primer mensaje.</p>
+                </div>
+                <div class="story-row-visual">
+                    <div class="phone-mini">
+                        <div class="phone-mini-shell">
+                            <div class="phone-mini-cam"></div>
+                            <span class="phone-mini-btn btn-side-1"></span>
+                            <span class="phone-mini-btn btn-side-2"></span>
+                            <span class="phone-mini-btn btn-power"></span>
+                            <div class="phone-mini-screen">
+                                <div class="phone-mini-shine"></div>
+                                <img src="assets/vip/chat.png" alt="Chat y contrato en CollUp">
+                            </div>
+                        </div>
+                        <div class="phone-mini-glow glow-cyan"></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="story-row story-row-reverse fade-up">
+                <div class="story-row-text">
+                    <span class="step-num">04</span>
+                    <h3>Paga sin riesgo, mide el retorno</h3>
+                    <p>El pago se libera solo cuando el contenido se publica. Y con nuestras métricas, ves exactamente qué ROI te dio cada colaboración.</p>
+                </div>
+                <div class="story-row-visual">
+                    <div class="phone-mini">
+                        <div class="phone-mini-shell">
+                            <div class="phone-mini-cam"></div>
+                            <span class="phone-mini-btn btn-side-1"></span>
+                            <span class="phone-mini-btn btn-side-2"></span>
+                            <span class="phone-mini-btn btn-power"></span>
+                            <div class="phone-mini-screen">
+                                <div class="phone-mini-shine"></div>
+                                <img src="assets/vip/measuring.png" alt="Medición de ROI en CollUp">
+                            </div>
+                        </div>
+                        <div class="phone-mini-glow glow-blue"></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="story-row fade-up">
+                <div class="story-row-text">
+                    <span class="step-num">05</span>
+                    <h3>Lanza campañas a escala</h3>
+                    <p>Cuando ya sabes qué funciona, activa campañas para varios creadores a la vez y multiplica tu alcance.</p>
+                </div>
+                <div class="story-row-visual">
+                    <div class="phone-mini">
+                        <div class="phone-mini-shell">
+                            <div class="phone-mini-cam"></div>
+                            <span class="phone-mini-btn btn-side-1"></span>
+                            <span class="phone-mini-btn btn-side-2"></span>
+                            <span class="phone-mini-btn btn-power"></span>
+                            <div class="phone-mini-screen">
+                                <div class="phone-mini-shine"></div>
+                                <img src="assets/vip/campaigns.png" alt="Campañas en CollUp">
+                            </div>
+                        </div>
+                        <div class="phone-mini-glow glow-cyan"></div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="benefits-vip">
+        <div class="benefit-vip-card fade-up">
+            <i data-lucide="shield-check"></i>
+            <h3>Cero riesgo</h3>
+            <p>Pagos retenidos de forma segura hasta que el contenido se entrega y apruebas el trabajo.</p>
+        </div>
+        <div class="benefit-vip-card fade-up">
+            <i data-lucide="users-round"></i>
+            <h3>Perfiles auditados</h3>
+            <p>Nada de seguidores comprados. Solo creadores verificados y con audiencia real.</p>
+        </div>
+        <div class="benefit-vip-card fade-up">
+            <i data-lucide="bar-chart-3"></i>
+            <h3>ROI medible</h3>
+            <p>Datos claros de alcance, impresiones y resultado por cada colaboración cerrada.</p>
+        </div>
+        <div class="benefit-vip-card fade-up">
+            <i data-lucide="file-check-2"></i>
+            <h3>Contratos automáticos</h3>
+            <p>Acuerdos digitales generados al momento. Sin papeleo, sin ambigüedad.</p>
+        </div>
+    </section>
+
+    <!-- FORM: ACCESO VIP -->
+    <section class="vip-form-section" id="acceso">
+        <div class="vip-form-wrap fade-up">
+            <div class="vip-form-copy">
+                <span class="eyebrow">ÚLTIMA LLAMADA</span>
+                <h2>Asegura tu plaza VIP<br>antes del lanzamiento.</h2>
+                <ul class="vip-form-perks">
+                    <li><i data-lucide="check"></i> Meses de suscripción gratis por ser de los primeros</li>
+                    <li><i data-lucide="check"></i> Prioridad de visibilidad frente a creadores</li>
+                    <li><i data-lucide="check"></i> Onboarding personalizado con el equipo de CollUp</li>
+                </ul>
+            </div>
+
+            <form id="vip-business-form" class="vip-form-card">
+                <div class="vip-input-group">
+                    <label for="vip-biz-name">Nombre del negocio</label>
+                    <input type="text" id="vip-biz-name" required placeholder="Ej. Hotel Marina Bay">
+                </div>
+                <div class="vip-input-group">
+                    <label for="vip-biz-email">Email corporativo</label>
+                    <input type="email" id="vip-biz-email" required placeholder="contacto@tunegocio.com">
+                </div>
+                <div class="vip-input-group">
+                    <label for="vip-biz-type">Sector</label>
+                    <select id="vip-biz-type" required>
+                        <option value="" disabled selected>Selecciona tu sector...</option>
+                        <option value="Hotel/Alojamiento">Hotel / Alojamiento</option>
+                        <option value="Agencia de Viajes">Agencia de Viajes</option>
+                        <option value="Restaurante/Bar">Restaurante / Bar</option>
+                        <option value="Marca de Ropa">Marca de Ropa / Moda</option>
+                        <option value="Beauty/Retail">Beauty / Retail</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-vip-primary btn-vip-full">
+                    <span>Quiero acceso exclusivo</span> <i data-lucide="arrow-right"></i>
+                </button>
+                <div class="vip-success" id="vip-success">
+                    <i data-lucide="check-circle"></i> ¡Listo! Ya estás en la lista VIP. Te contactaremos antes del lanzamiento.
+                </div>
+                <p class="vip-form-note">Sin spam. Solo te escribiremos para tu acceso anticipado.</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="vip-footer">
+        <img src="assets/logo.png" alt="CollUp" class="vip-footer-logo">
+        <p>© 2026 CollUp. Redefiniendo el marketing de influencia.</p>
+    </footer>
+
+    <script src="business-vip.js"></script>
+</body>
+</html>
