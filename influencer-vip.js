@@ -1,5 +1,5 @@
-const SUPABASE_URL = 'https://wiezfulptazkbuneqwxk.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_9oZzyX5cqtxDu0XvKNY2Qg_CeGfziAZ';
+const SUPABASE_URL = 'https://xikyjwxvcmiohxztglgs.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_loxgiljlYepy5uyKrxIU3w_4eqExVRM';
 
 let supabaseClient = null;
 function getSupabase() {
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const supabase = getSupabase();
                 if (!supabase) throw new Error('Supabase no inicializado');
 
-                const { error } = await supabase.from('waitlist').insert([payload]);
+                const { error } = await supabase.from('landing_waitlist').insert([payload]);
 
                 if (error) {
                     console.error('Error saving:', error);
