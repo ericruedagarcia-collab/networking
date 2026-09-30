@@ -103,7 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 role: 'business',
                 name: document.getElementById('vip-biz-name').value,
                 email: document.getElementById('vip-biz-email').value,
-                business_type: document.getElementById('vip-biz-type').value
+                business_type: document.getElementById('vip-biz-type').value,
+                monthly_collabs: document.getElementById('vip-biz-collabs').value,
+                monthly_budget: document.getElementById('vip-biz-budget').value
             };
 
             try {

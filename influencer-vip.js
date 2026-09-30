@@ -103,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 role: 'creator',
                 name: document.getElementById('vip-inf-name').value,
                 email: document.getElementById('vip-inf-email').value,
-                niche: document.getElementById('vip-inf-niche').value
+                niche: document.getElementById('vip-inf-niche').value,
+                ig_followers: document.getElementById('vip-inf-followers').value
             };
 
             try {
