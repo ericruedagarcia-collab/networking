@@ -780,3 +780,52 @@ a:focus-visible, button:focus-visible { outline: 2px solid #48e8d0; outline-offs
 .vip-logo img { width: 72px; height: 48px; object-fit: contain; }
 .vip-nav-cta { color: #48e8d0; font-size: 13px; text-decoration: none; }
 @media (max-width: 859px) { .marquee { display: block; mask-image: none; -webkit-mask-image: none; } .marquee-track { padding: 0 20px; } }
+
+/* Live status, rightward seamless carousel, and a light guiding the scroll. */
+.vip-badge { gap: 12px; padding: 11px 15px; border: 1px solid rgba(72,232,208,.24); border-radius: 12px; background: #0d2425; letter-spacing: 0; text-align: left; }
+.live-label { font-size: 12px; font-weight: 600; line-height: 1.5; color: #c9efea; }
+.live-audience { color: #94bdb8; font-weight: 400; }
+.live-tag { padding: 4px 8px; margin-left: 5px; border-left: 1px solid #31524f; color: #87a9a6; font-size: 10px; font-weight: 500; white-space: nowrap; }
+.live-indicator { position: relative; display: grid; place-items: center; width: 18px; height: 18px; flex-shrink: 0; }
+.live-indicator > span { width: 6px; height: 6px; border-radius: 50%; background: #48e8d0; box-shadow: 0 0 8px rgba(72,232,208,.7); animation: live-beat 2.4s ease-in-out infinite; }
+.live-indicator::after { content: ''; position: absolute; inset: 3px; border: 1px solid #48e8d0; border-radius: 50%; animation: live-ring 2.4s ease-out infinite; }
+@keyframes live-ring { 0% { transform: scale(.6); opacity: .7; } 80%,100% { transform: scale(1.7); opacity: 0; } }
+@keyframes live-beat { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(.8); opacity: .65; } }
+.marquee { display: flex; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); -webkit-mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.marquee-track { display: flex; flex-wrap: nowrap; width: max-content; gap: 0; padding: 0; animation: carousel-right 32s linear infinite; }
+.marquee-group { display: flex; align-items: center; justify-content: space-around; gap: 56px; min-width: 100vw; padding: 0 28px; flex-shrink: 0; }
+.marquee-track .marquee-group span { display: block; font-size: 13px; letter-spacing: .1em; white-space: nowrap; }
+@keyframes carousel-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.story-row { position: relative; border-top: 0; }
+.story-row::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent,rgba(72,232,208,.45) 20%,#48e8d0 50%,rgba(72,232,208,.45) 80%,transparent); box-shadow: 0 0 8px rgba(72,232,208,.3),0 0 24px rgba(72,232,208,.12); pointer-events: none; }
+.scroll-guide { position: fixed; top: 0; left: 0; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle,rgba(72,232,208,.20),rgba(72,232,208,.075) 32%,rgba(72,232,208,.02) 55%,transparent 72%); pointer-events: none; z-index: 0; opacity: 0; transition: transform .22s ease-out, opacity .4s ease; will-change: transform; }
+.phone-mini-shell { transition: transform .45s var(--ease),box-shadow .45s ease; }
+@media (hover: hover) and (pointer: fine) {
+ .phone-mini:hover .phone-mini-shell, .story-row-reverse .phone-mini:hover .phone-mini-shell { transform: scale(1.09); box-shadow: 0 24px 55px -12px rgba(0,0,0,.7),0 0 0 1px rgba(72,232,208,.4),0 0 28px rgba(72,232,208,.12); }
+ .phone-duo:hover .phone-mini--back { transform: translate(-30px,-30px) rotate(-6deg); }
+ .phone-duo:hover .phone-mini--front { transform: none; }
+}
+@media (max-width: 859px) {
+ .vip-badge { padding: 10px 12px; gap: 8px; }
+ .live-label { font-size: 11px; } .live-audience { display: block; }
+ .live-tag { font-size: 9px; margin-left: 0; padding-left: 10px; }
+ .marquee-group { min-width: 100vw; gap: 30px; padding: 0 15px; }
+ .marquee-track .marquee-group span { display: block; font-size: 11px; }
+ .scroll-guide { width: 240px; height: 240px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .live-indicator > span, .live-indicator::after { animation: none; }
+ .live-indicator::after { opacity: .4; }
+ .marquee { mask-image: none; -webkit-mask-image: none; }
+ .marquee-track { animation: none; width: 100%; }
+ .marquee-group { min-width: 0; width: 100%; flex-wrap: wrap; gap: 16px 24px; }
+ .marquee-group[aria-hidden] { display: none; }
+ .scroll-guide { display: none; }
+ .phone-mini:hover .phone-mini-shell { transform: none !important; }
+}
+/* Persistent light from the hero to the footer; the beam fades as movement settles. */
+.scroll-light-layer { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; contain: strict; }
+.scroll-light-layer .scroll-guide { position: absolute; width: 360px; height: 360px; opacity: 1; transition: none; background: radial-gradient(circle,rgba(72,232,208,.28) 0%,rgba(72,232,208,.16) 18%,rgba(72,232,208,.065) 38%,rgba(72,232,208,.015) 58%,transparent 72%); }
+.scroll-light-trail { position: absolute; top: 0; left: 0; height: 80px; transform-origin: 40px 40px; border-radius: 50%; background: radial-gradient(ellipse at center,rgba(72,232,208,.18),rgba(72,232,208,.06) 38%,transparent 72%); opacity: 0; will-change: transform,opacity; }
+@media (max-width: 859px) { .scroll-light-layer .scroll-guide { width: 260px; height: 260px; } }
+@media (prefers-reduced-motion: reduce) { .scroll-light-layer { display: none; } }
