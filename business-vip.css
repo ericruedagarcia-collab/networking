@@ -829,3 +829,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid #48e8d0; outline-offs
 .scroll-light-trail { position: absolute; top: 0; left: 0; height: 80px; transform-origin: 40px 40px; border-radius: 50%; background: radial-gradient(ellipse at center,rgba(72,232,208,.18),rgba(72,232,208,.06) 38%,transparent 72%); opacity: 0; will-change: transform,opacity; }
 @media (max-width: 859px) { .scroll-light-layer .scroll-guide { width: 260px; height: 260px; } }
 @media (prefers-reduced-motion: reduce) { .scroll-light-layer { display: none; } }
+.seo-footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; margin-top: 20px; font-size: 12px; }
+.seo-footer-nav a { color: #a5afbc; text-decoration: none; }
+.seo-footer-nav a:hover { color: #48e8d0; }

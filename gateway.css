@@ -73,3 +73,5 @@ body.gateway-body { background: #0b1118; color: #edf1f3; }
  .gw-cta { padding: 12px 14px; font-size: 13px; }
  .gw-note { margin-top: 20px; font-size: 11px; }
 }
+.gw-footer { flex-wrap: wrap; }
+.gw-footer .seo-footer-nav { flex-basis: 100%; margin-top: 0; justify-content: flex-start; }
