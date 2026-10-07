@@ -1,14 +1,24 @@
 const SUPABASE_URL = 'https://xikyjwxvcmiohxztglgs.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_loxgiljlYepy5uyKrxIU3w_4eqExVRM';
 
+// Load the signup dependency only when a visitor submits the form.
 let supabaseClient = null;
-function getSupabase() {
+let supabaseLoading;
+async function getSupabase() {
     if (supabaseClient) return supabaseClient;
-    if (window.supabase) {
-        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        return supabaseClient;
+    if (!window.supabase) {
+        if (!supabaseLoading) supabaseLoading = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js';
+            const timeout = setTimeout(() => { script.remove(); reject(new Error('Tiempo de conexión agotado')); }, 12000);
+            script.onload = () => { clearTimeout(timeout); resolve(); };
+            script.onerror = () => { clearTimeout(timeout); reject(new Error('No se pudo conectar')); };
+            document.head.append(script);
+        }).catch(error => { supabaseLoading = null; throw error; });
+        await supabaseLoading;
     }
-    return null;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return supabaseClient;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,64 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
         console.warn('Lucide Icons no cargó a tiempo');
     }
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // ---- Intro: animación de logo ----
-    const introScreen = document.getElementById('introScreen');
-    const hideIntro = () => {
-        document.body.classList.remove('no-scroll');
-        if (!introScreen) return;
-        introScreen.classList.add('intro-hide');
-        setTimeout(() => introScreen.remove(), 900);
-    };
-    if (introScreen) {
-        if (reduceMotion) {
-            hideIntro();
-        } else {
-            introScreen.addEventListener('click', hideIntro, { once: true });
-            setTimeout(hideIntro, 2100);
-        }
-    }
-
-    // ---- Cursor glow ambiental (solo dispositivos con puntero fino) ----
-    const glow = document.getElementById('cursorGlow');
-    if (glow && window.matchMedia('(hover: hover)').matches && !reduceMotion) {
-        let raf = null;
-        window.addEventListener('mousemove', (e) => {
-            glow.classList.add('active');
-            if (raf) cancelAnimationFrame(raf);
-            raf = requestAnimationFrame(() => {
-                glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            });
-        }, { passive: true });
-        document.addEventListener('mouseleave', () => glow.classList.remove('active'));
-    }
-
-    // ---- Botones magnéticos ----
-    if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
-        document.querySelectorAll('[data-magnetic]').forEach((btn) => {
-            btn.addEventListener('mousemove', (e) => {
-                const r = btn.getBoundingClientRect();
-                const x = e.clientX - r.left - r.width / 2;
-                const y = e.clientY - r.top - r.height / 2;
-                btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
-            });
-            btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-        });
-    }
-
-    // ---- Reveal on scroll ----
-    const revealEls = document.querySelectorAll('.fade-up');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-    revealEls.forEach(el => revealObserver.observe(el));
 
     // ---- Formulario VIP creadores ----
     const form = document.getElementById('vip-influencer-form');
@@ -108,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const supabase = getSupabase();
+                const supabase = await getSupabase();
                 if (!supabase) throw new Error('Supabase no inicializado');
 
                 const { error } = await supabase.from('landing_waitlist').insert([payload]);

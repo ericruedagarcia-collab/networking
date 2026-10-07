@@ -690,3 +690,93 @@ h1, h2, h3, .eyebrow-mark { font-family: var(--font-display); letter-spacing: -0
 .vip-footer { text-align: center; padding: 50px 20px; border-top: 1px solid var(--card-border); }
 .vip-footer-logo { height: 56px; margin: 0 auto 14px; opacity: 0.85; }
 .vip-footer p { color: var(--muted); font-size: 0.85rem; }
+
+/* Refined layout: readable first paint, restrained motion and mobile proportions. */
+:root { --muted: #a5afbc; --muted-2: #8995a4; }
+body::before, body::after, .noise-overlay, .cursor-glow, .intro-screen { display: none; }
+.vip-gradient { animation: none; background: none; -webkit-text-fill-color: #48e8d0; color: #48e8d0; }
+.hero-grid { opacity: .18; }
+.hero-logo img { width: 64px; height: 64px; filter: none; }
+.vip-hero { padding-top: 40px; }
+.vip-hero-title { font-weight: 650; letter-spacing: -.045em; line-height: 1.1; }
+.vip-hero-title .kword { animation: none; transform: none; opacity: 1; }
+.vip-badge { border-radius: 6px; background: #15231f; border-color: #344a42; letter-spacing: .07em; }
+.vip-badge .dot { animation: none; box-shadow: none; flex-shrink: 0; }
+.btn-vip-primary { background: #48e8d0; border-radius: 9px; font-weight: 650; box-shadow: none; justify-content: center; min-height: 50px; will-change: auto; }
+.btn-vip-primary::after { display: none; }
+.btn-vip-primary:hover { background: #68f0d8; box-shadow: none; }
+.btn-vip-primary:disabled { opacity: .6; cursor: wait; }
+.btn-vip-primary svg { width: 19px; height: 19px; flex-shrink: 0; }
+a:focus-visible, button:focus-visible { outline: 2px solid #48e8d0; outline-offset: 5px; }
+.fade-up { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s var(--ease); transition-delay: 0s; }
+.fade-up.reveal-pending:not(.is-visible) { opacity: 0; transform: translateY(18px); }
+.story-row.fade-up { opacity: 1; transform: none; }
+.story-row .story-row-visual { transition: opacity .8s ease, transform .9s var(--ease); }
+.story-row.reveal-pending:not(.is-visible) .story-row-visual { opacity: 0; transform: translateY(24px); }
+.phone-mini-screen img.image-pending { opacity: 0; transition: opacity .65s ease; }
+.phone-mini-screen img.image-ready { opacity: 1; }
+.phone-mini-screen { background: #131b24; }
+.phone-mini-glow { display: none; }
+.creator-card-float { animation: none; background: #17212d; backdrop-filter: none; }
+.story-intro h2, .vip-form-copy h2 { font-weight: 650; letter-spacing: -.035em; }
+.story-row { padding-block: 34px; border-top: 1px solid #25303a; }
+.story-rows { gap: 32px; }
+.benefit-vip-card { border-radius: 12px; }
+.benefit-vip-card svg { width: 26px; height: 26px; color: #48e8d0; margin-bottom: 16px; }
+.vip-form-wrap { background: #101922; backdrop-filter: none; border-radius: 16px; }
+.vip-form-perks svg { width: 20px; height: 20px; color: #48e8d0; flex-shrink: 0; }
+.vip-input-group select { appearance: auto; }
+.vip-input-group input, .vip-input-group select { min-height: 50px; }
+.vip-success svg { width: 20px; height: 20px; flex-shrink: 0; }
+.btn-vip-full { width: 100%; }
+.avatars img { aspect-ratio: 1; }
+@media (max-width: 859px) {
+ .vip-hero { padding: 28px 20px 44px; }
+ .hero-logo { margin-bottom: 24px; }
+ .hero-logo img { width: 48px; height: 48px; }
+ .vip-badge { font-size: 9px; line-height: 1.6; padding: 9px 12px; max-width: 100%; margin-bottom: 24px; }
+ .vip-hero-title { font-size: clamp(30px, 7.7vw, 52px); margin-bottom: 22px; width: 100%; }
+ .vip-hero-sub { font-size: 15px; line-height: 1.75; margin-bottom: 26px; max-width: 520px; }
+ .vip-hero-actions { width: 100%; max-width: 400px; gap: 20px; }
+ .vip-hero-actions > .btn-vip-primary { width: 100%; padding: 16px; font-size: 14px; }
+ .vip-hero-meta p { font-size: 12px; }
+ .trust-strip { padding-block: 22px; }
+ .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; gap: 12px 22px; width: auto; }
+ .marquee-track span { font-size: 10px; } .marquee-track span:nth-child(n+6) { display: none; }
+ .story-section { padding: 44px 20px 20px; }
+ .story-intro { margin-bottom: 32px; text-align: left; }
+ .story-intro h2 { font-size: clamp(28px, 7vw, 36px); }
+ .story-row { gap: 28px; padding-block: 30px 38px; }
+ .story-row-text { text-align: left; max-width: 520px; width: 100%; }
+ .story-row-text h3 { font-size: 24px; line-height: 1.2; }
+ .story-row-text p { font-size: 14px; line-height: 1.75; }
+ .story-row-text .step-num { font-size: 11px; margin-bottom: 12px; }
+ .phone-mini { width: clamp(196px, 55vw, 250px); max-width: 100%; }
+ .phone-mini-shell, .story-row-reverse .phone-mini-shell, .phone-mini:hover .phone-mini-shell { transform: none; }
+ .phone-mini-shell { padding: 18px 8px 20px; border-radius: 34px; box-shadow: 0 16px 28px -14px #000, 0 0 0 1px #3a414a; }
+ .phone-mini-screen { border-radius: 23px; }
+ .phone-duo { width: 100%; max-width: 340px; padding: 20px 0 12px 20px; }
+ .phone-mini--back { width: 42%; flex-shrink: 0; transform: translate(-10px,-14px) rotate(-4deg); }
+ .phone-mini--front { width: 62%; flex-shrink: 0; margin-left: -40px; }
+ .phone-duo:hover .phone-mini--back { transform: translate(-10px,-14px) rotate(-4deg); }
+ .phone-duo:hover .phone-mini--front { transform: none; }
+ .creator-card-float { max-width: calc(100vw - 48px); bottom: -16px; }
+ .benefits-vip { margin: 36px auto 0; padding-inline: 20px; gap: 12px; }
+ .benefit-vip-card { padding: 20px 16px; } .benefit-vip-card h3 { font-size: 15px; } .benefit-vip-card p { font-size: 13px; }
+ .vip-form-section { padding: 52px 20px; }
+ .vip-form-wrap { padding: 24px 18px; gap: 28px; background: #101922; }
+ .vip-form-copy h2 { font-size: 28px; }
+ .vip-form-perks li { align-items: flex-start; font-size: 13px; }
+ .vip-form-card { padding: 20px 16px; border-radius: 12px; min-width: 0; }
+ .vip-form-card .btn-vip-primary { font-size: 14px; padding: 14px 12px; }
+ .vip-footer { padding: 28px 20px; } .vip-footer p { font-size: 12px; }
+}
+@media (max-width: 360px) { .benefits-vip { grid-template-columns: 1fr; } .vip-badge { font-size: 8px; } }
+@media (prefers-reduced-motion: reduce) {
+ .fade-up.reveal-pending:not(.is-visible), .story-row.reveal-pending:not(.is-visible) .story-row-visual, .phone-mini-screen img.image-pending { opacity: 1; transform: none; }
+}
+.vip-footer-logo { width: 84px; height: 56px; object-fit: contain; }
+.vip-nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 6%; }
+.vip-logo img { width: 72px; height: 48px; object-fit: contain; }
+.vip-nav-cta { color: #48e8d0; font-size: 13px; text-decoration: none; }
+@media (max-width: 859px) { .marquee { display: block; mask-image: none; -webkit-mask-image: none; } .marquee-track { padding: 0 20px; } }
