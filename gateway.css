@@ -75,3 +75,12 @@ body.gateway-body { background: #0b1118; color: #edf1f3; }
 }
 .gw-footer { flex-wrap: wrap; }
 .gw-footer .seo-footer-nav { flex-basis: 100%; margin-top: 0; justify-content: flex-start; }
+.gw-about { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-top: 1px solid #25303a; margin-top: 48px; padding-top: 36px; }
+.gw-about h2 { font-size: 21px; letter-spacing: -.025em; font-weight: 600; margin-bottom: 16px; }
+.gw-about p { color: #a5afbc; font-size: 13px; line-height: 1.8; margin-bottom: 14px; }
+.gw-faq details { border-bottom: 1px solid #25303a; padding-block: 14px; }
+.gw-faq summary { font-size: 13px; cursor: pointer; color: #dce4e9; }
+.gw-faq details p { margin: 12px 0 0; }
+.gw-faq a { color: #48e8d0; text-underline-offset: 3px; }
+.gw-faq summary:focus-visible { outline: 2px solid #48e8d0; outline-offset: 4px; }
+@media (max-width: 700px) { .gw-about { grid-template-columns: 1fr; gap: 22px; margin-top: 30px; padding-top: 28px; } }
