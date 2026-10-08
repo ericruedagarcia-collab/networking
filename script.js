@@ -216,7 +216,7 @@ const translations = {
         biz_step3_title: "3. Colabora sin Riesgo",
         biz_step3_desc: "Tus pagos están protegidos hasta que el contenido se publica, o podéis cerrar el trato íntegramente mediante canje (trueque).",
         biz_form_title: "Moderniza tu Marketing de Influencia",
-        biz_form_subtitle: "Asegura tu acceso anticipado y consigue meses de suscripción gratis por ser de los primeros.",
+        biz_form_subtitle: "Reserva tu acceso anticipado a CollUp gratis de por vida, sin cuota de suscripción.",
         biz_form_card_title: "Soy Negocio",
         form_biz_name: "Nombre del Negocio",
         form_biz_email: "Email Corporativo",
