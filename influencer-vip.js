@@ -71,13 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Aviso por email a collupworld@gmail.com (no bloqueante:
-                // si falla, el lead ya está guardado en Supabase igualmente).
-                fetch('/api/notify-signup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                }).catch((notifyErr) => console.warn('No se pudo enviar el aviso por email:', notifyErr));
+                // The saved registration queues its personalized welcome server-side.
 
                 btn.innerHTML = originalHTML;
                 if (typeof lucide !== 'undefined') lucide.createIcons();
