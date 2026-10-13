@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 role: 'business',
                 name: document.getElementById('vip-biz-name').value,
                 email: document.getElementById('vip-biz-email').value,
+                phone: (document.getElementById('vip-biz-phone')?.value || '').trim(),
                 business_type: document.getElementById('vip-biz-type').value,
                 monthly_collabs: document.getElementById('vip-biz-collabs').value,
                 monthly_budget: document.getElementById('vip-biz-budget').value
@@ -68,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (error) {
                     console.error('Error saving:', error);
-                    resetBtn('Error de conexión, inténtalo de nuevo');
+                    // The server says what to fix ("Revisa el teléfono", "Revisa el email"…).
+                    resetBtn(error.hint || 'Error de conexión, inténtalo de nuevo');
                     return;
                 }
 
