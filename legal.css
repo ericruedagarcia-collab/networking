@@ -1,0 +1,12 @@
+.legal-header { width: min(880px,calc(100% - 40px)); margin:auto; padding:24px 0; border-bottom:1px solid #25303a; }
+.legal-header a { display:flex; align-items:center; gap:12px; color:#c5d6d3; text-decoration:none; font-size:14px; }
+.legal-document { width:min(800px,calc(100% - 40px)); margin:40px auto 64px; }
+.legal-document h1 { font-size:clamp(30px,5vw,46px); line-height:1.15; font-weight:650; margin-bottom:16px; }
+.legal-document h2 { font-size:21px; line-height:1.35; margin:32px 0 14px; font-weight:600; }
+.legal-document p,.legal-document dd { color:#b5c0cb; font-size:15px; line-height:1.8; margin-bottom:16px; }
+.legal-document a { color:#48e8d0; text-underline-offset:3px; }
+.legal-draft { padding:16px; border:1px solid #8c7040; background:#272216; border-radius:8px; color:#f1d197 !important; font-size:13px !important; }
+.legal-version { font-size:12px !important; color:#8c9ba8 !important; }
+.legal-document dt { color:#edf1f3; font-weight:600; margin-top:14px; }
+.legal-document table { width:100%; border-collapse:collapse; font-size:13px; }
+.legal-document th,.legal-document td { padding:12px; border:1px solid #30404b; text-align:left; }

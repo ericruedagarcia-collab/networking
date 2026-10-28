@@ -1,3 +1,5 @@
+const { timingSafeEqual } = require('node:crypto');
+
 // Vercel Serverless Function: notifies collupworld@gmail.com by email via Resend
 // whenever someone joins the VIP waitlist from business-vip.html.
 //
@@ -14,9 +16,22 @@ module.exports = async (req, res) => {
         return;
     }
 
+    // Internal webhook only: never allow anonymous browsers to send email.
+    const secret = process.env.NOTIFY_WEBHOOK_SECRET;
+    const provided = req.headers?.['x-collup-webhook-secret'];
+    if (!secret) {
+        res.status(503).json({ error: 'Notifications disabled' });
+        return;
+    }
+    const expectedBuffer = Buffer.from(secret);
+    const providedBuffer = Buffer.from(typeof provided === 'string' ? provided : '');
+    if (expectedBuffer.length !== providedBuffer.length || !timingSafeEqual(expectedBuffer, providedBuffer)) {
+        res.status(401).json({ error: 'Unauthorized' });
+        return;
+    }
     const { name, email, business_type, role } = req.body || {};
 
-    if (!name || !email) {
+    if (typeof name !== 'string' || name.length < 1 || name.length > 200 || typeof email !== 'string' || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         res.status(400).json({ error: 'Missing required fields' });
         return;
     }
@@ -59,8 +74,8 @@ module.exports = async (req, res) => {
         });
 
         if (!resendRes.ok) {
-            const detail = await resendRes.text();
-            console.error('Resend error', resendRes.status, detail);
+            await resendRes.text();
+            console.error('Resend error', resendRes.status);
             res.status(502).json({ error: 'Email provider error' });
             return;
         }

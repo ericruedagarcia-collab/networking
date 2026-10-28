@@ -84,3 +84,4 @@ body.gateway-body { background: #0b1118; color: #edf1f3; }
 .gw-faq a { color: #48e8d0; text-underline-offset: 3px; }
 .gw-faq summary:focus-visible { outline: 2px solid #48e8d0; outline-offset: 4px; }
 @media (max-width: 700px) { .gw-about { grid-template-columns: 1fr; gap: 22px; margin-top: 30px; padding-top: 28px; } }
+.gw-footer .legal-links { flex-basis:100%; justify-content:flex-start; margin-top:0; }

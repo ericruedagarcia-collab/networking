@@ -832,3 +832,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid #48e8d0; outline-offs
 .seo-footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; margin-top: 20px; font-size: 12px; }
 .seo-footer-nav a { color: #a5afbc; text-decoration: none; }
 .seo-footer-nav a:hover { color: #48e8d0; }
+.legal-links { display:flex; flex-wrap:wrap; justify-content:center; gap:12px 22px; margin-top:18px; font-size:12px; }
+.legal-links a,.privacy-summary a { color:#48e8d0; text-underline-offset:3px; }
+.privacy-summary { font-size:12px; color:#a5afbc; line-height:1.7; margin:18px 0; }
+.privacy-summary p { margin-bottom:12px; }
+.privacy-consent { display:flex; align-items:flex-start; gap:10px; color:#dce5e9; cursor:pointer; margin:16px 0; }
+.privacy-consent input { width:18px; height:18px; flex-shrink:0; accent-color:#48e8d0; margin-top:3px; }
+.privacy-status { color:#efcf94; }
+.product-preview-note { text-align:center; color:#8c9ba8; font-size:11px; line-height:1.6; margin-bottom:28px; }

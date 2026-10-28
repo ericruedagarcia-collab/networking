@@ -14,6 +14,9 @@
 
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://collup.info/negocios.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <script src="legal-config.js" defer></script>
+    <script src="legal-ui.js" defer></script>
 </head>
 <body>
 
@@ -33,7 +36,7 @@
         <div class="vip-badge fade-up">
             <span class="live-indicator" aria-hidden="true"><span></span></span>
             <span class="live-label">Acceso anticipado <span class="live-audience">para negocios</span></span>
-            <span class="live-tag">Plazas limitadas</span>
+            <span class="live-tag">Lista de espera</span>
         </div>
         <h1 class="vip-hero-title fade-up">
             TU NEGOCIO,<br>
@@ -48,12 +51,8 @@
                 Reservar mi acceso exclusivo <i data-lucide="arrow-right"></i>
             </a>
             <div class="vip-hero-meta">
-                <div class="avatars">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=140&h=140&fit=crop&q=80" alt="Hotel en CollUp" width="140" height="140" decoding="async">
-                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=140&h=140&fit=crop&q=80" alt="Restaurante en CollUp" width="140" height="140" decoding="async">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=140&h=140&fit=crop&q=80" alt="Agencia de viajes en CollUp" width="140" height="140" decoding="async">
-                </div>
-                <p>Negocios ya en lista de espera</p>
+                <div class="avatars" aria-hidden="true"><img src="assets/logo.webp" width="36" height="36" alt=""></div>
+                <p>Acceso anticipado para negocios</p>
             </div>
         </div>
     </section>
@@ -76,6 +75,7 @@
             <h2>De cero a colaboración <br class="br-desktop">en 5 pasos.</h2>
         </div>
 
+        <p class="product-preview-note">Vista previa del producto. Los perfiles y datos de los mockups son ilustrativos; las funciones están previstas para el lanzamiento.</p>
         <div class="story-rows">
 
             <article class="story-row fade-up">
@@ -231,7 +231,7 @@
     <section class="vip-form-section" id="acceso">
         <div class="vip-form-wrap fade-up">
             <div class="vip-form-copy">
-                <span class="eyebrow">ÚLTIMA LLAMADA</span>
+                <span class="eyebrow">ACCESO ANTICIPADO</span>
                 <h2>Asegura tu plaza VIP<br>antes del lanzamiento.</h2>
                 <ul class="vip-form-perks">
                     <li><i data-lucide="check"></i> Acceso a CollUp gratis de por vida, sin cuota de suscripción</li>
@@ -265,6 +265,12 @@
                         <option value="Otro">Otro</option>
                     </select>
                 </div>
+                <div class="privacy-summary">
+                    <p><strong>Protección de datos.</strong> Responsable: <span data-legal-field="controller">CollUP Castellón</span>. Usaremos tus datos para gestionar tu solicitud y avisarte del acceso a CollUp, con tu consentimiento. Puedes retirarlo y ejercer tus derechos según la <a href="/privacidad.html">política de privacidad</a>. No te suscribimos a publicidad adicional.</p>
+                    <label class="privacy-consent"><input type="checkbox" name="privacy-consent" required> <span>Consiento el uso de mis datos para gestionar mi solicitud y recibir avisos del acceso anticipado. He leído la <a href="/privacidad.html">política de privacidad</a>.</span></label>
+                    <p>Inscribirte no implica una compra ni garantiza una fecha de lanzamiento. Consulta las <a href="/condiciones.html">condiciones del acceso anticipado</a>.</p>
+                    <p class="privacy-status" role="status" aria-live="polite"></p>
+                </div>
                 <button type="submit" class="btn-vip-primary btn-vip-full">
                     <span>Quiero acceso exclusivo</span> <i data-lucide="arrow-right"></i>
                 </button>
@@ -279,6 +285,7 @@
     <footer class="vip-footer">
         <img src="assets/logo.webp" alt="CollUp" class="vip-footer-logo" width="1536" height="1024" decoding="async">
         <p>© 2026 CollUp. Redefiniendo el marketing de influencia.</p>
+    <nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a><a href="/condiciones.html">Acceso anticipado</a></nav>
     </footer>
 
     <script src="landing-motion.js"></script>

@@ -9,7 +9,7 @@ async function getSupabase() {
     if (!window.supabase) {
         if (!supabaseLoading) supabaseLoading = new Promise((resolve, reject) => {
             const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js';
+            script.src = 'assets/vendor/supabase.min.js';
             const timeout = setTimeout(() => { script.remove(); reject(new Error('Tiempo de conexión agotado')); }, 12000);
             script.onload = () => { clearTimeout(timeout); resolve(); };
             script.onerror = () => { clearTimeout(timeout); reject(new Error('No se pudo conectar')); };
@@ -17,7 +17,7 @@ async function getSupabase() {
         }).catch(error => { supabaseLoading = null; throw error; });
         await supabaseLoading;
     }
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
     return supabaseClient;
 }
 
@@ -34,6 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const legal = window.COLLUP_LEGAL;
+            if (!legal?.ready || !form.reportValidity()) {
+                form.querySelector('.privacy-status').textContent = 'El registro no está disponible temporalmente.';
+                return;
+            }
+            if (!form.querySelector('[name="privacy-consent"]').checked) return;
 
             const btn = form.querySelector('button');
             const originalHTML = btn.innerHTML;
@@ -53,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const payload = {
                 role: 'business',
+                privacy_consent: true,
+                privacy_notice_version: legal.noticeVersion,
                 name: document.getElementById('vip-biz-name').value,
                 email: document.getElementById('vip-biz-email').value,
                 phone: (document.getElementById('vip-biz-phone')?.value || '').trim(),
@@ -60,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 monthly_collabs: document.getElementById('vip-biz-collabs').value,
                 monthly_budget: document.getElementById('vip-biz-budget').value
             };
+
+            const aff = window.COLLUP_REF && window.COLLUP_REF.get();
+            if (aff) payload.referral_code = aff;
 
             try {
                 const supabase = await getSupabase();
