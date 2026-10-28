@@ -101,7 +101,7 @@
     }
 
     function confirmView(email) {
-        card.innerHTML = `<div style="text-align:center"><div class="mark" style="width:56px;height:56px;font-size:26px;margin-bottom:18px"><i data-lucide="mail-check" style="width:28px;height:28px"></i></div>
+        card.innerHTML = `<div style="text-align:center"><img src="../assets/logo.webp" width="72" height="72" alt="CollUp" style="margin-bottom:14px;border-radius:16px">
         <h2>Confirma tu email</h2><p class="sub">Te hemos enviado un enlace a <b>${esc(email)}</b>. Ábrelo y volverás aquí con tu código reservado: lo activaremos automáticamente.</p>
         <button class="btn ghost block" id="back">Volver a entrar</button></div>`;
         icons(); $('#back').addEventListener('click', () => authView('in'));
