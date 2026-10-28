@@ -133,6 +133,21 @@
         if (p && p.code) $('#code').dispatchEvent(new Event('input'));
     }
 
+    function recoveryView() {
+        card.innerHTML = `<h2>Crea tu contraseña</h2><p class="sub">Elige una contraseña nueva para entrar al portal.</p>
+        <form id="f" novalidate><div class="field"><label class="f" for="p1">Nueva contraseña</label><input class="in" id="p1" type="password" autocomplete="new-password" minlength="8" placeholder="Mínimo 8 caracteres"></div>
+        <div class="field"><label class="f" for="p2">Repite la contraseña</label><input class="in" id="p2" type="password" autocomplete="new-password"></div>
+        <div class="hint err" id="err" hidden style="margin:0 0 12px"></div><button class="btn primary block" id="go">Guardar y entrar</button></form>`;
+        icons();
+        $('#f').addEventListener('submit', async (e) => {
+            e.preventDefault(); const err = $('#err'); err.hidden = true; const b = $('#go');
+            if ($('#p1').value.length < 8) { err.textContent = 'La contraseña debe tener al menos 8 caracteres.'; err.hidden = false; return; }
+            if ($('#p1').value !== $('#p2').value) { err.textContent = 'Las contraseñas no coinciden.'; err.hidden = false; return; }
+            try { btnBusy(b, true, 'Guardando…'); await AffAPI.changePassword($('#p1').value); history.replaceState(null, '', location.pathname); await route(); }
+            catch (x) { err.textContent = x.message; err.hidden = false; btnBusy(b, false); }
+        });
+    }
+
     async function route() {
         const s = await AffAPI.session();
         if (!s) return authView('in');
@@ -154,7 +169,12 @@
         $('#months-txt').textContent = status.commission_months + ' meses';
         if (status.launch_label) $('#launch-txt').textContent = `Lanzamiento previsto: ${status.launch_label}. Los negocios que registres ahora quedan en tu cartera y, cuando la app salga, tendrás ventaja sobre los demás afiliados.`;
         if (AffAPI.demo) { const d = document.createElement('div'); d.className = 'banner warn'; d.style.cssText = 'position:fixed;right:12px;top:12px;max-width:320px;z-index:60;margin:0'; d.innerHTML = '<i data-lucide="flask-conical"></i><div class="small"><b>Modo demo</b> · datos ficticios. Entra con cualquier email; si empieza por <code>admin</code> verás el panel de administración.</div>'; document.body.append(d); }
-        try { await route(); } catch (e) { authView('in'); toast(e.message, 'err'); }
+        const hash = location.hash || '';
+        try {
+            if (/error_code=|error=access_denied/.test(hash)) { history.replaceState(null, '', location.pathname); authView('in'); toast('El enlace ha caducado o ya se usó. Pide uno nuevo con "He olvidado mi contraseña".', 'err'); }
+            else if (/type=recovery/.test(hash)) { const s = await AffAPI.session(); if (s) recoveryView(); else { authView('in'); toast('El enlace no es válido. Pide uno nuevo.', 'err'); } }
+            else await route();
+        } catch (e) { authView('in'); toast(e.message, 'err'); }
         icons();
     })();
 })();
