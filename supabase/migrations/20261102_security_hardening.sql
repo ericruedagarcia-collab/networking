@@ -2,21 +2,17 @@
 -- Idempotente. No toca datos. Aplicar en el SQL Editor de Supabase.
 begin;
 
--- 1) Campañas: el anónimo solo ve columnas de escaparate (sin escrow, ni business_id, ni tarifas).
---    Comprueba antes que la landing/app no necesita otras columnas como anon.
-revoke select on public.campaigns from anon;
-grant select (id, title, description, niche, platform, platforms, images, content_type, status,
-              deadline, application_deadline, max_applicants, requirements, audience,
-              reward_type, perk_description, created_at)
-  on public.campaigns to anon;
+-- 1) Lista de espera: la política antigua "Allow public insert" (WITH CHECK true) anulaba a collup_waitlist_insert
+--    porque las políticas permisivas se combinan con OR. Se elimina y se limitan las columnas que anon puede escribir.
+drop policy if exists "Allow public insert" on public.landing_waitlist;
+revoke insert on public.landing_waitlist from anon;
+grant insert (role, name, email, phone, business_type, niche, monthly_collabs, monthly_budget, ig_followers,
+              referral_code, privacy_consent, privacy_notice_version)
+  on public.landing_waitlist to anon;
 
 -- 2) Lista de espera: tope de longitud en campos libres (evita relleno con basura).
 do $$ declare c text; begin
-  for c in select column_name from information_schema.columns
-           where table_schema='public' and table_name='landing_waitlist'
-             and data_type in ('text','character varying')
-             and column_name not in ('name','email','role','privacy_notice_version','referral_code')
-  loop
+  foreach c in array array['phone','business_type','niche','monthly_collabs','monthly_budget','ig_followers'] loop
     execute format('alter table public.landing_waitlist drop constraint if exists %I', 'wl_len_'||c);
     execute format('alter table public.landing_waitlist add constraint %I check (%I is null or char_length(%I) <= 300) not valid',
                    'wl_len_'||c, c, c);
@@ -74,4 +70,5 @@ revoke execute on function public.affiliate_admin_create_payout(uuid, text, bool
 grant execute on function public.affiliate_admin_create_payout(uuid, text, boolean), public.affiliate_signup(text, text, boolean) to authenticated;
 
 commit;
--- Después: probar como anon que SELECT * en campaigns falla y que la landing sigue enviando formularios.
+-- Nota: campaigns y reviews son de lectura pública a propósito (escaparate de la app); no se tocan aquí.
+-- Después: probar que la landing sigue enviando formularios y que anon no puede insertar admin_notified_at.
